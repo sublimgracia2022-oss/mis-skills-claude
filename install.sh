@@ -43,6 +43,13 @@ if [ -f "$SKILLS/claude-drawing/requirements.txt" ]; then
   pip install -q -r "$SKILLS/claude-drawing/requirements.txt"
 fi
 
+# Pack de instrumentos reales de anidoodle (373 MB). Poner "no" para saltearlo.
+SONIDOS_ANIDOODLE="si"
+FETCH="$(ls -d "$HOME"/.claude/plugins/cache/*/anidoodle/*/skills/anidoodle/engine/tools/soundfetch.mjs 2>/dev/null | tail -1)"
+if [ "$SONIDOS_ANIDOODLE" = "si" ] && [ -n "$FETCH" ] && [ ! -f "$HOME/.anidoodle/sounds/manifest.json" ]; then
+  node "$FETCH" get all || echo "Aviso: no se pudo descargar el pack de sonidos de anidoodle"
+fi
+
 # 5) Ajustes de Claude Code (navegador local para HandDraw, fuente para claude-drawing)
 python3 "$REPO/ajustes.py"
 echo "Listo: skills instaladas en $SKILLS"

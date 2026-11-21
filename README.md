@@ -16,6 +16,9 @@ Skills que se instalan solas al comenzar cada sesión de Claude Code en la nube.
 - Tema de colores y fuente propia por proyecto: `project.theme` con `text`, `muted`, `accent`, `glow`, `grid`, `font` y `fontFile`.
 - Color por texto: `color` en cada objeto de texto.
 
+### anidoodle
+- Incluye el pack opcional de instrumentos reales (piano, arpa, marimba, vibráfono, campanas, timbales; 373 MB). Para no descargarlo, cambiar `SONIDOS_ANIDOODLE="si"` por `"no"` en `install.sh`.
+
 ## Cómo se instala
 ```bash
 bash install.sh

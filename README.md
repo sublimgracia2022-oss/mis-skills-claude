@@ -7,6 +7,7 @@ Skills que se instalan solas al comenzar cada sesión de Claude Code en la nube.
 | Skill | Para qué sirve | Origen |
 |---|---|---|
 | `handdraw-skill` | Videos animados estilo pizarra (MP4), con voz y música | [ToBeWin/HandDraw-Skill](https://github.com/ToBeWin/HandDraw-Skill), con ajustes propios |
+| `anidoodle` (plugin) | Ilustraciones, animaciones, videos con música y webs interactivas en 32 estilos | [alexgreensh/anidoodle](https://github.com/alexgreensh/anidoodle) |
 | `claude-drawing` | Ilustraciones pintadas con código en 83 estilos | [cloveric/claude-drawing-skill](https://github.com/cloveric/claude-drawing-skill) |
 
 ### Ajustes hechos a HandDraw
@@ -23,5 +24,6 @@ El script de inicio del entorno de Claude lo hace solo en cada sesión nueva.
 
 ## Cómo agregar una skill nueva
 - **Sin cambios:** sumar una línea a `externas.txt` con `nombre  link-del-repositorio`.
+- **Plugin de Claude Code:** sumar una línea a `plugins.txt` con `usuario/repositorio  plugin@marketplace`.
 - **Con cambios propios:** copiar la carpeta de la skill dentro de `skills/`.
 - Si necesita programas, agregar su instalación en el paso 3 de `install.sh`.

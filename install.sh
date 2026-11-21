@@ -22,7 +22,16 @@ while read -r name url; do
   fi
 done < "$REPO/externas.txt"
 
-# 3) Dependencias de cada skill
+# 3) Plugins de Claude Code (plugins.txt)
+if command -v claude >/dev/null 2>&1 && [ -f "$REPO/plugins.txt" ]; then
+  while read -r market plugin; do
+    case "$market" in ''|'#'*) continue ;; esac
+    claude plugin marketplace add "$market" || true
+    claude plugin install "$plugin" || echo "Aviso: no se pudo instalar el plugin $plugin"
+  done < "$REPO/plugins.txt"
+fi
+
+# 4) Dependencias de cada skill
 if [ -d "$SKILLS/handdraw-skill" ]; then
   (cd "$SKILLS/handdraw-skill" \
     && npm install --no-audit --no-fund \
@@ -34,6 +43,6 @@ if [ -f "$SKILLS/claude-drawing/requirements.txt" ]; then
   pip install -q -r "$SKILLS/claude-drawing/requirements.txt"
 fi
 
-# 4) Ajustes de Claude Code (navegador local para HandDraw, fuente para claude-drawing)
+# 5) Ajustes de Claude Code (navegador local para HandDraw, fuente para claude-drawing)
 python3 "$REPO/ajustes.py"
 echo "Listo: skills instaladas en $SKILLS"

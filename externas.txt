@@ -1,0 +1,3 @@
+# Skills que se instalan tal cual desde su repositorio original.
+# Formato: nombre-de-carpeta  link-del-repositorio
+claude-drawing  https://github.com/cloveric/claude-drawing-skill.git
